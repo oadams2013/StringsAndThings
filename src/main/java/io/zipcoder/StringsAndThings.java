@@ -15,7 +15,20 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+        int ct = 0; //word count is set to 0
+        for (int i=0; i < input.length(); i++) {
+            //for loop is used
+            if (input.charAt(i) == 'y' || input.charAt(i) == 'z') {
+                // first if statement checks if there is a y and z in the words given
+                if (i < input.length()-1 && !Character.isLetter(input.charAt(i+1)))
+                    ct++;
+                // this if statement counts
+                else if ( i == input.length() -1)
+                ct++;
+            }
+        }
+
+        return ct;
     }
 
     /**
@@ -28,7 +41,11 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+
+        String phrase = ""; // call the phrase
+        phrase += base.replace(remove,""); // take the " base phrase and remove what you want from the phrase
+
+        return phrase; // will give you what is leftover after what you chose to remove
     }
 
     /**
@@ -39,8 +56,21 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("This is notnot") // Should return true
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
-    public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+    public Boolean containsEqualNumberOfIsAndNot(String input) {
+        int is = 0;
+        int nt = 0;
+        for (int i = 0; i < input.length() -1; i++){
+            // for loop for "is"
+
+            if (input.charAt(i) == 'i' && input.charAt(i + 1) == 's')
+                is++;
+
+    } // for loop for "not"
+        for (int i = 0; i < input.length() -2; i++) {
+            if (input.charAt(i) == 'n' && input.charAt(i + 1) == 'o' && input.charAt(i + 2) == 't')
+                nt++;
+        } // we put - 2 in the range to account for stopping word since the last letter won't have 2 letters
+        return is == nt;
     }
 
     /**
@@ -50,8 +80,23 @@ public class StringsAndThings {
      *           gHappy("xxgxx") // Should return  false
      *           gHappy("xxggyygxx") // Should return  false
      */
-    public Boolean gIsHappy(String input){
-        return null;
+    public Boolean gIsHappy(String input) {
+
+        for (int i = 1; i < input.length(); i++) {
+
+            if (input.charAt(i) == 'g' && input.charAt(i - 1) == 'g' && input.charAt(i + 1) == 'g') {
+
+                return true; // when g is to the immediate left and right
+            }
+            if (input.charAt(i) == 'g' && input.charAt(i - 1) == 'g') {
+                return true; // when g is to the left
+            }
+            if (input.charAt(i) == 'g' && input.charAt(i + 1) == 'g') {
+                return true; // when g is to the right
+            }
+
+        }
+        return false; // if all three cases dont apply then it's not happy
     }
 
 
@@ -63,6 +108,15 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+
+        int ct = 0;
+        for (int i = 0; i < input.length() -2; i++) {
+            Character l = input.charAt(i);
+            if (input.charAt(i) == l && input.charAt(i + 1) == l && input.charAt(i + 2) == l)
+                ct++;
+
+        } //
+
+        return ct;
     }
 }
